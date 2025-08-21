@@ -71,15 +71,34 @@ export class InlineViewer extends Application {
   </div>
 </p>
 `;
-    JournalEntry.create(
-      {
-        name: safeUrl,
-        content,
-      },
-      {
-        renderSheet: true,
-      }
-    );
+    if (window.game?.data?.release?.generation >= 13) {
+      JournalEntry.create(
+        {
+          name: safeUrl,
+          pages: [
+            {
+              name: safeUrl,
+              text: {
+                content
+              }
+            }
+          ]
+        },
+        {
+          renderSheet: true,
+        }
+      )
+    } else {
+      JournalEntry.create(
+        {
+          name: safeUrl,
+          content,
+        },
+        {
+          renderSheet: true,
+        }
+      );
+    }
   }
 
   /* -------------------------------------------- */

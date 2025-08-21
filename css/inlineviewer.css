@@ -271,3 +271,7 @@
   margin-left: -1px;
   margin-right: 0;
 }
+
+.sheet.journal-entry .journal-entry-page.text:has(.inlineViewerFrame) {
+  position: unset;
+}

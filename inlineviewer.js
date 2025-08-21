@@ -60,7 +60,8 @@ Hooks.once("init", () => {
  * @param  {JQuery} html
  * @param  {Object} data
  */
-function renderJournalSheet(journalSheet, html, data) {
+function renderJournalSheet(journalSheet, _html, data) {
+  let html = jQuery(_html);
   let frame = html.find(".inlineViewerFrame");
   if (frame.length === 0) return;
 
@@ -90,6 +91,7 @@ function renderJournalSheet(journalSheet, html, data) {
 
 Hooks.on("renderJournalSheet", renderJournalSheet);
 Hooks.on("renderJournalTextPageSheet", renderJournalSheet);
+Hooks.on("renderJournalEntryPageTextSheet", renderJournalSheet);
 
 Hooks.on("getSceneControlButtons", (controls) => {
   let privateSettings = game.settings.get("inlinewebviewer", "privateWebviewersNew") || [];
